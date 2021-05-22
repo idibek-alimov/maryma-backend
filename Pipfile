@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==3.2.3"
+pillow = "*"
+django-multiselectfield = "*"
+djangorestframework = "==3.12.4"
+django-rest-swagger = "==2.2.0"
+coreapi = "==2.3.3"
+pyyaml = "==5.4.1"
+psycopg2-binary = "==2.8.6"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
