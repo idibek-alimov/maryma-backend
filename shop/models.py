@@ -67,7 +67,7 @@ class Product (models.Model):
 
     description = models.TextField()
   
-    size = ArrayField(models.CharField(choices=SIZES,max_length=10,blank=True,null=True)) 
+    size = ArrayField(models.CharField(max_length=10,blank=True,null=True)) 
     #MultiSelectField(choices=SIZES,
     #                        null=True, blank=True)
     #colors = ArrayField(models.CharField(choices=SIZES,max_length=10,blank=True,null=True))
@@ -85,5 +85,11 @@ class Product (models.Model):
     def __str__(self):
         return self.name
 
-
-
+class Like (models.Model):
+    #user_id = models.IntegerField()
+    user = models.ForeignKey(get_user_model(),
+                                on_delete=models.CASCADE)
+    product_id = models.IntegerField()
+    
+    def __str__(self):
+        return str(self.user)

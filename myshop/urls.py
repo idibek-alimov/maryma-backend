@@ -26,8 +26,12 @@ schema_view = get_swagger_view(title =API_TITLE)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('schema/', schema_view),
+    path('api-auth/', include('rest_framework.urls')),
     path('docs/', include_docs_urls(title=API_TITLE,
                                     description=API_DESCRIPTION)),
     path('swagger-docs/',schema_view),
+    path('rest-auth/',include('rest_auth.urls')),
+    path('rest-auth/registration/', # new
+          include('rest_auth.registration.urls')),
     path('',include('shop.urls',namespace='shop')),
 ]

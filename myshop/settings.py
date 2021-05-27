@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'django.contrib.sites',
     #local apps
     'shop.apps.ShopConfig',
     'accounts.apps.AccountsConfig',
@@ -45,8 +45,15 @@ INSTALLED_APPS = [
     #third party apps
     'multiselectfield',
     'rest_framework',
+    'corsheaders',
     'rest_framework_swagger',
-
+    'rest_framework.authtoken',
+    'rest_auth',
+    'allauth', # new
+    'allauth.account', # new
+    'allauth.socialaccount', # new
+    'rest_auth.registration', # new
+    'django.contrib.postgres', 
 
 ]
 REST_FRAMEWORK = {
@@ -66,12 +73,20 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+'http://localhost:3000',
+'http://localhost:8000',
+)
+
+
 
 ROOT_URLCONF = 'myshop.urls'
 
@@ -155,3 +170,6 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
+SITE_ID = 1 # new
