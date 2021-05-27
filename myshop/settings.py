@@ -27,7 +27,7 @@ SECRET_KEY = '&qq=q#4f)bqq^jwmks^qhqy58y&t3dkfi%@oxy5--0#rqj!+&2'
 DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1',
-'agile-everglades-41893.herokuapp.com']
+'warm-waters-06974.herokuapp.com']
 
 
 # Application definition
