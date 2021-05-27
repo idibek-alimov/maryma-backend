@@ -177,13 +177,16 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')# location where you will store you
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'project_name/static')
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
 SITE_ID = 1 # new
