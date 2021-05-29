@@ -87,13 +87,13 @@ MIDDLEWARE = [
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CORS_ORIGIN_WHITELIST = (
-'http://localhost:3000',
-'http://localhost:8000',
-'http://git.heroku.com/maryam-shop.git',
-)
+#CORS_ORIGIN_WHITELIST = (
+#'http://localhost:3000',
+#'http://localhost:8000',
+#'http://git.heroku.com/maryam-shop.git',
+#)
 
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'myshop.urls'
 
