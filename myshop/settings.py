@@ -90,8 +90,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CORS_ORIGIN_WHITELIST = (
 'http://localhost:3000',
 'http://localhost:8000',
-'https://git.heroku.com/maryam-shop.git',
-'*',
+'https://git.heroku.com/maryam-shop.git'
 )
 
 
