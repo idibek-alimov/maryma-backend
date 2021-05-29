@@ -4,12 +4,21 @@ from django.contrib.postgres.search import TrigramSimilarity
 from django.contrib.postgres.search import SearchVector,SearchQuery,SearchRank,TrigramSimilarity
 from rest_framework.response import Response
 # Create your views here.
-from .models import Product,Like
-from .serializer import LikeSerializer, ProductSerializer
+from .models import Product,Like,SubCategory
+from .serializer import LikeSerializer, ProductSerializer,SubCategorySerializer,MyProductSerializer
 from .permissions import IsAuthorOrReadOnly
 from rest_framework import generics,permissions, serializers,viewsets,status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
+
+class MyProductView(generics.ListAPIView):
+    serializer_class = MyProductSerializer
+    def get_queryset(self):
+        return Product.objects.filter(author=self.request.user)
+
+class SubCategoryView(generics.ListAPIView):
+    serializer_class = SubCategorySerializer
+    queryset = SubCategory.objects.all()
 
 
 class ProductViewSet(viewsets.ModelViewSet):
@@ -36,6 +45,10 @@ class SearchViewSet(viewsets.ViewSet):
         serializer = ProductSerializer(products,many=True)
         return Response(serializer.data)
     
+
+    
+
+
 class CategoryProductFilter(generics.ListAPIView):
     serializer_class = ProductSerializer
     def get_queryset(self,*args,**kwargs):
