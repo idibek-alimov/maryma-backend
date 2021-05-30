@@ -44,6 +44,8 @@ uritemplate = "==3.0.1"
 urllib3 = "==1.26.5"
 whitenoise = "==5.2.0"
 Django = "==3.2.3"
+django-storages = "==1.11.1"
+google-cloud-storage = "==1.38.0"
 
 [dev-packages]
 

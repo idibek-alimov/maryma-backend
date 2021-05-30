@@ -28,11 +28,11 @@ class ProductSerializer(serializers.ModelSerializer):
     likes_product = serializers.SerializerMethodField('get_like')            
     class Meta:
         model = Product
-        fields = ('id','name','description','price','size','subcategory','likes_product')
+        fields = ('id','name','description','price','size','subcategory','likes_product','image')
 class MyProductSerializer(serializers.ModelSerializer):
   class Meta:
     model = Product
-    fields = ('id','name','description','price','size','subcategory')
+    fields = ('id','name','description','price','size','subcategory','image')
 
 
 class LikeSerializer(serializers.ModelSerializer):

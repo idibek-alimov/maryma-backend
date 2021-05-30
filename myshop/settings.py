@@ -183,8 +183,32 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'myshop/static')
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# MEDIA_URL = '/media/'
+# for media store in the bucket 
+# getting credential
+# from google.oauth2 import service_account
+# GS_CREDETIALS = service_account.Credentials.from_service_account_file(
+#     os.path.join(BASE_DIR,'credential.json')
+# )
+
+from google.oauth2 import service_account
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    "credential.json"
+)
+
+# configuration for media file  storing adn reciving dedia file from gloud
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+#DEFAULT_FILE_STORAGE = 'myshop.gcloud.GoogleCloudMediaFileStorage'
+GS_PROJECT_ID = 'maryam-315312'
+GS_BUCKET_NAME = 'maryam-photo-bucket'
+MEDIA_ROOT = "media/"
+UPLOAD_ROOT = 'media/uploads/'
+MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
+
+#STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 

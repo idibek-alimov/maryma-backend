@@ -73,7 +73,7 @@ class Product (models.Model):
     #colors = ArrayField(models.CharField(choices=SIZES,max_length=10,blank=True,null=True))
     price = models.DecimalField(max_digits=10,
                                 decimal_places=2)
-    image = models.ImageField(upload_to='img',null=True,blank=True)
+    image = models.ImageField(upload_to='photos',null=True,blank=True)
 
 
     available = models.BooleanField(default=True)
