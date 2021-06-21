@@ -4,8 +4,8 @@ from django.contrib.postgres.search import TrigramSimilarity
 from django.contrib.postgres.search import SearchVector,SearchQuery,SearchRank,TrigramSimilarity
 from rest_framework.response import Response
 # Create your views here.
-from .models import Product,Like,SubCategory
-from .serializer import LikeSerializer, ProductSerializer,SubCategorySerializer,MyProductSerializer
+from .models import Product,Like,SubCategory,Orders
+from .serializer import LikeSerializer, ProductSerializer,SubCategorySerializer,MyProductSerializer,OrdersSerializer,ToOrderSerializer
 from .permissions import IsAuthorOrReadOnly
 from rest_framework import generics,permissions, serializers,viewsets,status
 from rest_framework.decorators import api_view
@@ -85,7 +85,23 @@ class LikeCreateList(generics.ListCreateAPIView):
       return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST )
 
 
+class OrdersView(viewsets.ModelViewSet):
+    queryset = Orders.objects.filter(check_out=False)
+    serializer_class = OrdersSerializer
+    
+    #def get_queryset(self):
+     #   return Orders.objects.filter(check_out=False)
 
+class ToOrderView(generics.CreateAPIView):
+    serializer_class = ToOrderSerializer
+    def create(self,request,*args,**kwargs):
+        serializer = ToOrderSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return super(ToOrderView,self).create(request,*args,**kwargs)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST )   
+            
+        
 
 
 

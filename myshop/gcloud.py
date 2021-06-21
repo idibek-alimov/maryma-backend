@@ -6,7 +6,7 @@ from urllib.parse import urljoin
 class GoogleCloudMediaFileStorage(GoogleCloudStorage):
     """
     Google file storage class which gives a media file path for DEDIA_URL not google generated one
-    """
+    """ 
     def __init__(self, *args, **kwargs):
             if not settings.MEDIA_URL:
                 raise Exception('MEDIA_URL has not been configured')

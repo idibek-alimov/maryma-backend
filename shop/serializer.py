@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db.models import fields 
 from rest_framework import serializers
-from .models import Product ,Like,SubCategory
+from .models import Product ,Like,SubCategory,Orders
 #from multiselectfield import MultiSelectField
 
 SIZES = (
@@ -44,3 +44,13 @@ class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
       model = SubCategory
       fields = ('id','name','category')
+
+class OrdersSerializer(serializers.ModelSerializer):
+    class Meta:
+      model = Orders
+      fields = ('id','user','product','check_out',)
+
+class ToOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+      model = Orders
+      fields = ('product',)      

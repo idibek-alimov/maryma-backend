@@ -93,3 +93,17 @@ class Like (models.Model):
     
     def __str__(self):
         return str(self.user)
+
+
+class Orders(models.Model):
+    user = models.ForeignKey(get_user_model(),
+                                on_delete=models.CASCADE)
+    product = models.ManyToManyField(Product)
+    check_out = models.BooleanField(default=False)
+
+    created = models.DateField(auto_now_add=True,blank=True,null=True)
+    
+    updated = models.DateTimeField(auto_now=True,blank=True,null=True)
+
+    def __str__(self) -> str:
+        return self.user.username                                                                                                    
