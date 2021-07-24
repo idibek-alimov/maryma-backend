@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'rest_auth.registration', # new
     'django.contrib.postgres',
 
-    'whitenoise.runserver_nostatic' 
+    'whitenoise.runserver_nostatic',
+    'django_extensions', 
 
 ]
 REST_FRAMEWORK = {
@@ -131,8 +132,12 @@ DATABASES = {
      }
 }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+
+
+
+
 #fdsf
 #DATABASES = {
  #   'default': dj_database_url.config()

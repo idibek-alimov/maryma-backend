@@ -46,8 +46,18 @@ whitenoise = "==5.2.0"
 Django = "==3.2.3"
 django-storages = "==1.11.1"
 google-cloud-storage = "==1.38.0"
+ipython = "*"
+jupyter = "*"
+pandas = "*"
+numpy = "*"
+matplotlib = "*"
+sklearn = "*"
+seaborn = "*"
 
 [dev-packages]
+ipython = "*"
+jupyter = "*"
+django-extensions = "*"
 
 [requires]
 python_version = "3.6"

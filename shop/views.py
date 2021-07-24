@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from django.contrib.postgres.search import TrigramSimilarity
 from django.contrib.postgres.search import SearchVector,SearchQuery,SearchRank,TrigramSimilarity
+from numpy import matrixlib
+from pandas.core.groupby.base import plotting_methods
 from rest_framework.response import Response
 # Create your views here.
 from .models import Product,Like,SubCategory,Orders
@@ -10,7 +12,6 @@ from .permissions import IsAuthorOrReadOnly
 from rest_framework import generics,permissions, serializers,viewsets,status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-
 class MyProductView(generics.ListAPIView):
     serializer_class = MyProductSerializer
     def get_queryset(self):
@@ -101,7 +102,34 @@ class ToOrderView(generics.CreateAPIView):
             return super(ToOrderView,self).create(request,*args,**kwargs)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST )   
             
-        
+
+
+# subcategory = pd.DataFrame(SubCategory.objects.all().values())
+# product = pd.DataFrame(Product.objects.all().values())
+# print(subcategory.groupby('name').sum())
+import pandas as pd
+import numpy as np
+
+product = SubCategory.objects.all()
+data = product.values()
+
+df = pd.DataFrame(data)
+print(df)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
